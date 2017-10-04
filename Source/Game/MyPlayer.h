@@ -26,11 +26,10 @@ public:
 
 	void MoveForward(float Value);
 	void MoveRight(float Value);
-	void StartAttack();
-	void StopAttack();
 
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	FORCEINLINE class UCameraComponent* GetFlowCamera() const { return FlowCamera; }
+
 
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
@@ -39,9 +38,4 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 		class UCameraComponent* FlowCamera;
 
-private:
-	UPROPERTY(EditDefaultsOnly, Category = Animation)
-		UAnimMontage* AttackAnim;
-
-	bool IsAttacking = false;
 };

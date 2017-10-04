@@ -65,23 +65,4 @@ void AMyPlayer::MoveRight(float Value)
 	}
 }
 
-// 공격애니메이션 재생
-void AMyPlayer::StartAttack()
-{
-	if (IsAttacking)
-		return;
 
-	float AnimDuration = PlayAnimMontage(AttackAnim);
-	IsAttacking = true;
-
-	// 애니메이션이 끝나면 StopAttack 호출
-	FTimerHandle TimerHandle_StopAttack;
-	GetWorldTimerManager().SetTimer(TimerHandle_StopAttack, this, &AMyPlayer::StopAttack, AnimDuration, false);
-}
-
-// 공격애니메이션 정지
-void AMyPlayer::StopAttack()
-{
-	StopAnimMontage(AttackAnim);
-	IsAttacking = false;
-}

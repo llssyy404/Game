@@ -26,6 +26,32 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	
-	
+	float GetHP() const { return HP; }
+
+	virtual float TakeDamage(float Damage, struct FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+
+protected:
+	virtual void OnHit(float DamageTaken, struct FDamageEvent const& DamageEvent, class APawn* PawnInstigator, class AActor* DamageCauser);
+	virtual void Die(float KillingDamage, struct FDamageEvent const& DamageEvent, AController* Killer, class AActor* DamageCauser);
+	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
+
+	void OnDieAnimationEnd();
+	void StartAttack();
+	void StopAttack();
+
+protected:
+	UPROPERTY(EditDefaultsOnly, Category = Animation)
+		UAnimMontage* AttackAnim;
+
+	UPROPERTY(EditDefaultsOnly, Category = Animation)
+		UAnimMontage* DamageAnim;
+
+	UPROPERTY(EditDefaultsOnly, Category = Animation)
+		UAnimMontage* DeathAnim;
+
+	bool IsAttacking = false;
+
+public:
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = Health)
+		float HP = 100.f;
 };
