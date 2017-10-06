@@ -14,7 +14,8 @@ class GAME_API AMonster : public ACharacterBase
 {
 	GENERATED_BODY()
 	
-	
+public:
+	AMonster();
 	
 	
 };

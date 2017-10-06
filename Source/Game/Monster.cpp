@@ -2,6 +2,8 @@
 
 #include "Monster.h"
 
-
-
+AMonster::AMonster()
+{
+	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+}
 

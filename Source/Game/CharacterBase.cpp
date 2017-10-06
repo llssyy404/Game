@@ -108,8 +108,7 @@ void ACharacterBase::NotifyActorBeginOverlap(AActor* OtherActor)
 {
 	Super::NotifyActorBeginOverlap(OtherActor);
 
-	// IsA는 뭐징?
-	// && 무기 소지한 본인인지 체크 && 공격중에만 -> 데미지적용
+	// && 본인인지 체크 && 공격중에만 -> 데미지적용
 	if (OtherActor->IsA(AActor::StaticClass()) && OtherActor != this && IsAttacking == true)
 	{
 		// 지정된 액터에 일반적인 피해를 줌

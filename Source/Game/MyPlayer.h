@@ -38,4 +38,7 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 		class UCameraComponent* FlowCamera;
 
+private:
+	UPROPERTY(VisibleAnywhere, Category = "Collision")
+		class USphereComponent* WeaponCollision;
 };

@@ -4,6 +4,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Components/SphereComponent.h"
 
 AMyPlayer::AMyPlayer()
 {
@@ -21,6 +22,10 @@ AMyPlayer::AMyPlayer()
 	FlowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FlowCamera->AttachTo(CameraBoom, USpringArmComponent::SocketName);	// CameraBoom¿¡ Camera Ãß°¡
 	FlowCamera->bUsePawnControlRotation = true;
+
+	WeaponCollision = CreateDefaultSubobject<USphereComponent>(TEXT("WeaponCollision"));
+	WeaponCollision->InitSphereRadius(60.f);
+	WeaponCollision->AttachTo(GetMesh(), "Blade_Weapon_DamageSoket");
 }
 
 // Called every frame
