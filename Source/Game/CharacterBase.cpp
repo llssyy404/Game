@@ -118,6 +118,7 @@ void ACharacterBase::NotifyActorBeginOverlap(AActor* OtherActor)
 
 void ACharacterBase::OnDieAnimationEnd()
 {
+	StopAnimMontage(DeathAnim);
 	this->SetActorHiddenInGame(true);	// 게임안에서 액터를 숨김
 	SetLifeSpan(0.1f);
 }
