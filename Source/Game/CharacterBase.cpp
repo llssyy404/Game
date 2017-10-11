@@ -60,6 +60,11 @@ float ACharacterBase::TakeDamage(float Damage, struct FDamageEvent const& Damage
 	return ActualDamage;
 }
 
+float ACharacterBase::GetHealthPercent() const
+{
+	return HP / (float)100.f;
+}
+
 void ACharacterBase::OnHit(float DamageTaken, struct FDamageEvent const& DamageEvent, class APawn* PawnInstigator, class AActor* DamageCauser)
 {
 	float DemagedAnimDuration = PlayAnimMontage(DamageAnim);
@@ -73,9 +78,6 @@ void ACharacterBase::OnHit(float DamageTaken, struct FDamageEvent const& DamageE
 void ACharacterBase::Die(float KillingDamage, struct FDamageEvent const& DamageEvent, AController* Killer, class AActor* DamageCauser)
 {
 	HP = FMath::Min(0.f, HP);
-
-	UDamageType const* const DamageType = DamageEvent.DamageTypeClass ? Cast<const UDamageType>(DamageEvent.DamageTypeClass->GetDefaultObject()) :
-		GetDefault<UDamageType>();
 
 	GetWorldTimerManager().ClearAllTimersForObject(this);
 
