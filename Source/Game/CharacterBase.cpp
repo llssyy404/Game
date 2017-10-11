@@ -109,18 +109,19 @@ void ACharacterBase::NotifyActorBeginOverlap(AActor* OtherActor)
 	Super::NotifyActorBeginOverlap(OtherActor);
 
 	// && 본인인지 체크 && 공격중에만 -> 데미지적용
-	if (OtherActor->IsA(AActor::StaticClass()) && OtherActor != this && IsAttacking == true)
+	if (OtherActor->IsA(AActor::StaticClass()) && OtherActor != this && IsAttacking == true && OtherActor->ActorHasTag("Enemy") != ActorHasTag("Enemy"))
 	{
 		// 지정된 액터에 일반적인 피해를 줌
-		UGameplayStatics::ApplyDamage(OtherActor, 50.f, NULL, this, UDamageType::StaticClass());
+		UGameplayStatics::ApplyDamage(OtherActor, Damage, NULL, this, UDamageType::StaticClass());
 	}
 }
 
 void ACharacterBase::OnDieAnimationEnd()
 {
 	StopAnimMontage(DeathAnim);
-	this->SetActorHiddenInGame(true);	// 게임안에서 액터를 숨김
-	SetLifeSpan(0.1f);
+	//this->SetActorHiddenInGame(true);	// 게임안에서 액터를 숨김
+	Destroy();
+	//SetLifeSpan(0.1f);
 }
 
 // 공격애니메이션 재생

@@ -36,6 +36,7 @@ protected:
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 
 	void OnDieAnimationEnd();
+	UFUNCTION(BlueprintCallable, Category = Properties)
 	void StartAttack();
 	void StopAttack();
 
@@ -50,6 +51,7 @@ protected:
 		UAnimMontage* DeathAnim;
 
 	bool IsAttacking = false;
+	float Damage = 50.0f;
 
 public:
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = Health)

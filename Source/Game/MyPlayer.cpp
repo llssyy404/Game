@@ -16,7 +16,7 @@ AMyPlayer::AMyPlayer()
 
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->AttachTo(RootComponent);	// Root에 CameraBoom 추가
-	CameraBoom->TargetArmLength = 500.f;	// 캐릭터와의 거리 설정
+	CameraBoom->TargetArmLength = 800.f;	// 캐릭터와의 거리 설정
 	CameraBoom->bUsePawnControlRotation = true;
 
 	FlowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
@@ -25,7 +25,9 @@ AMyPlayer::AMyPlayer()
 
 	WeaponCollision = CreateDefaultSubobject<USphereComponent>(TEXT("WeaponCollision"));
 	WeaponCollision->InitSphereRadius(60.f);
-	WeaponCollision->AttachTo(GetMesh(), "Blade_Weapon_DamageSoket");
+	WeaponCollision->AttachTo(GetMesh(), "Blade_Weapon_DamageSocket");
+
+	Damage = 20.0f;
 }
 
 // Called every frame

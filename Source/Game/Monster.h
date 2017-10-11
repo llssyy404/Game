@@ -17,5 +17,8 @@ class GAME_API AMonster : public ACharacterBase
 public:
 	AMonster();
 	
-	
+private:
+	UPROPERTY(VisibleAnywhere, Category = "Collision")
+	class USphereComponent* WeaponCollision;
+
 };
