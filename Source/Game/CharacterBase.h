@@ -33,15 +33,16 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Health")
 		float GetHealthPercent() const;
 
+	UFUNCTION(BlueprintCallable, Category = Properties)
+	void StartAttack();
+	void StopAttack();
+
 protected:
 	virtual void OnHit(float DamageTaken, struct FDamageEvent const& DamageEvent, class APawn* PawnInstigator, class AActor* DamageCauser);
 	virtual void Die(float KillingDamage, struct FDamageEvent const& DamageEvent, AController* Killer, class AActor* DamageCauser);
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 
 	void OnDieAnimationEnd();
-	UFUNCTION(BlueprintCallable, Category = Properties)
-	void StartAttack();
-	void StopAttack();
 
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = Animation)
