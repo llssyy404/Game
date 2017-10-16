@@ -67,7 +67,10 @@ float ACharacterBase::GetHealthPercent() const
 
 void ACharacterBase::OnHit(float DamageTaken, struct FDamageEvent const& DamageEvent, class APawn* PawnInstigator, class AActor* DamageCauser)
 {
-	float DemagedAnimDuration = PlayAnimMontage(DamageAnim);
+	if (!IsAttacking)
+	{
+		float DemagedAnimDuration = PlayAnimMontage(DamageAnim);
+	}
 
 	if (DamageTaken > 0.f)
 	{
