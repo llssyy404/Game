@@ -106,7 +106,7 @@ void ACharacterBase::Die(float KillingDamage, struct FDamageEvent const& DamageE
 
 															// 애니메이션 재생이 끝나면 OnDieAnimationEnd 호출됨
 	FTimerHandle TimerHandle;
-	GetWorldTimerManager().SetTimer(TimerHandle, this, &ACharacterBase::OnDieAnimationEnd, DeathAnimDuration, false);
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &ACharacterBase::OnDieAnimationEnd, DeathAnimDuration - 0.25f, false);
 }
 
 void ACharacterBase::NotifyActorBeginOverlap(AActor* OtherActor)
